@@ -6,10 +6,11 @@ orbs:
   node: circleci/node@4.1
 
 jobs:
-  build:
+  run_tests:
     docker:
       - image: circleci/node:10.0-browsers
     steps:
+      - checkout
       - run:
           name: "Run Jest and Collect Coverage Reports"
           command: npx jest --coverage
