@@ -6,17 +6,20 @@ orbs:
   node: circleci/node@4.1
 
 jobs:
-  run_tests:
-    docker:
-      - image: circleci/node:10.0-browsers
-    steps:
-      - checkout
-      - run:
-          name: "Run Jest and Collect Coverage Reports"
-          command: npx jest --coverage
+build:
+  docker:
+    - image: circleci/node:10.0-browsers
+  steps:
+    - checkout
+    - run: npm install
+    - run:
+        name: "Run Jest and Collect Coverage Reports"
+        command: jest --collectCoverage=true
+    - store_artifacts:
+        path: coverage
 
 workflows:
   node-tests:
     jobs:
       - node/test
-      - run_tests
+      - build
