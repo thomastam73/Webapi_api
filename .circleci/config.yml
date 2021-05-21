@@ -14,8 +14,8 @@ jobs:
           name: "Install"
           command: npm install
       - run:
-          name: "Run Coverage Reports"
-          command: npx jest --coverage
+          name: "Run test"
+          command: npm test
 
 workflows:
   node-tests:
