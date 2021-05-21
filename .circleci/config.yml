@@ -10,9 +10,6 @@ workflows:
   node-tests:
     jobs:
       - node/test
-
-
-    jobs:
       build:
         docker:
           - image: circleci/node:10.0-browsers
